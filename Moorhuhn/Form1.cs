@@ -12,55 +12,62 @@ namespace Moorhuhn
 {
     public partial class Form1 : Form
     {
-        
-        List<PictureBox> items = new List<PictureBox>();
-        PictureBox box = new PictureBox();
+
+        // List<PictureBox> items = new List<PictureBox>();
+        PictureBox _box = null;
         Random rnd = new Random();
-        Boolean start = false;       
+        Boolean start = false;
         int counter = 0;
-       
+        int time = 10;
+
         public Form1()
         {
             InitializeComponent();
+            _box = new PictureBox();
+            _box.Click += new EventHandler(PictureBoxClick);
+            Controls.Add(_box);
+            _box.Hide();
             
+            lblTimer.Text = "Timeleft: "+time+" seconds";
         }
-            
+
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             start = true;
+            
+            timerTimeLeft.Start();
 
         }
 
         private void MakePictureBox()
         {
-               
-                box.Width = 50;
-                box.Height = 50;
-                box.BackColor = Color.Red;
-                int x = rnd.Next(10, this.ClientSize.Width - box.Width);
-                int y = rnd.Next(10, this.ClientSize.Height - box.Height);
-                box.Location = new Point(x, y);
+            if (_box == null)
+                _box = new PictureBox();
 
-                items.Add(box);
-                Controls.Add(box);
-
-            
-                box.Click += new EventHandler(PictureBoxClick);
+            _box.Width = 50;
+            _box.Height = 50;
+            _box.BackColor = Color.Red;
+            int x = rnd.Next(10, this.ClientSize.Width - _box.Width);
+            int y = rnd.Next(100, this.ClientSize.Height - _box.Height);
+            _box.Location = new Point(x, y);
+            _box.Show();
+            // items.Add(box);
 
         }
 
         private void PictureBoxClick(object sender, EventArgs e)
         {
-            
-            if (sender is PictureBox)
+
+            if (sender is PictureBox && start == true)
             {
                 PictureBox box = (PictureBox)sender;
-                items.Remove(box);
-                Controls.Remove(box);
+                //items.Remove(box);
+                box.Hide();
+                // Controls.Remove(box);
                 counter++;
-              
-                lblTreffer.Text = "Treffer: " + counter;
+
+                lblTreffer.Text = "Score: " + counter;
             }
 
         }
@@ -68,18 +75,27 @@ namespace Moorhuhn
 
         private void timerDelete_Tick(object sender, EventArgs e)
         {
-            
+
             int i = rnd.Next(0, 5);
 
-            if(start == true && i>0 && i<5)
+            if (start == true && i > 0 && i < 5)
             {
                 MakePictureBox();
-                
+
             }
 
-            
-            
+        }
 
+        private void timerTimeLeft_Tick(object sender, EventArgs e)
+        {
+            time--;
+            lblTimer.Text = "Timeleft: " + time + " seconds";
+
+            if (time == 0)
+            {
+                timerTimeLeft.Stop();
+                start = false;
+            }
         }
     }
 }

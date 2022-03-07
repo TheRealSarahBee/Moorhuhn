@@ -33,6 +33,8 @@ namespace Moorhuhn
             this.btnStart = new System.Windows.Forms.Button();
             this.timerDelete = new System.Windows.Forms.Timer(this.components);
             this.lblTreffer = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.timerTimeLeft = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnStart
@@ -57,19 +59,39 @@ namespace Moorhuhn
             this.lblTreffer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTreffer.Location = new System.Drawing.Point(118, 12);
             this.lblTreffer.Name = "lblTreffer";
-            this.lblTreffer.Size = new System.Drawing.Size(109, 25);
+            this.lblTreffer.Size = new System.Drawing.Size(100, 25);
             this.lblTreffer.TabIndex = 1;
-            this.lblTreffer.Text = "Treffer: 0";
+            this.lblTreffer.Text = "Score: 0";
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(233, 12);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(218, 25);
+            this.lblTimer.TabIndex = 2;
+            this.lblTimer.Text = "Timeleft: 0 seconds";
+            // 
+            // timerTimeLeft
+            // 
+            this.timerTimeLeft.Interval = 1000;
+            this.timerTimeLeft.Tick += new System.EventHandler(this.timerTimeLeft_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.lblTreffer);
             this.Controls.Add(this.btnStart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(500, 500);
+            this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Game";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,6 +102,8 @@ namespace Moorhuhn
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Timer timerDelete;
         private System.Windows.Forms.Label lblTreffer;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Timer timerTimeLeft;
     }
 }
 
