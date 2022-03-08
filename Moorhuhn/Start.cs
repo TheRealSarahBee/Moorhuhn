@@ -12,7 +12,9 @@ namespace Moorhuhn
 {
     public partial class Start : Form
     {
+
         
+
         public Start()
         {
             InitializeComponent();
@@ -24,27 +26,25 @@ namespace Moorhuhn
             {
                 Form1 setForm = new Form1();
                 setForm.Show();
-                
+                this.Hide();
+            }
+            else
+            {
+                lblChooseDifficulty.Text = "Choose a difficulty!";
             }
 
         }
 
-        private void rbEasy_CheckedChanged(object sender, EventArgs e)
+        private void Start_FormClosing(object sender, FormClosingEventArgs e)
         {
-            rbEasy.Checked = true;
-            
-        }
+            DialogResult dialog = MessageBox.Show("Dou you really wanna quit?", "Exit", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
 
-        private void rbMedium_CheckedChanged(object sender, EventArgs e)
-        {
-            rbMedium.Checked = true;
-            
-        }
 
-        private void rbHard_CheckedChanged(object sender, EventArgs e)
-        {
-            rbHard.Checked = true;
-            
+
         }
     }
 }

@@ -14,19 +14,21 @@ namespace Moorhuhn
     {
 
         // List<PictureBox> items = new List<PictureBox>();
-        PictureBox _box = null;
+        PictureBox _boxEasy = null;
         Random rnd = new Random();
         Boolean start = false;
         int counter = 0;
         int time = 10;
 
+
         public Form1()
         {
             InitializeComponent();
-            _box = new PictureBox();
-            _box.Click += new EventHandler(PictureBoxClick);
-            Controls.Add(_box);
-            _box.Hide();
+            
+            _boxEasy = new PictureBox();
+            _boxEasy.Click += new EventHandler(PictureBoxClick);
+            Controls.Add(_boxEasy);
+            _boxEasy.Hide();
             
             lblTimer.Text = "Timeleft: "+time+" seconds";
         }
@@ -42,16 +44,16 @@ namespace Moorhuhn
 
         private void MakePictureBox()
         {
-            if (_box == null)
-                _box = new PictureBox();
+            if (_boxEasy == null)
+                _boxEasy = new PictureBox();
 
-            _box.Width = 50;
-            _box.Height = 50;
-            _box.BackColor = Color.Red;
-            int x = rnd.Next(10, this.ClientSize.Width - _box.Width);
-            int y = rnd.Next(100, this.ClientSize.Height - _box.Height);
-            _box.Location = new Point(x, y);
-            _box.Show();
+            _boxEasy.Width = 50;
+            _boxEasy.Height = 50;
+            _boxEasy.BackColor = Color.Red;
+            int x = rnd.Next(10, this.ClientSize.Width - _boxEasy.Width);
+            int y = rnd.Next(100, this.ClientSize.Height - _boxEasy.Height);
+            _boxEasy.Location = new Point(x, y);
+            _boxEasy.Show();
             // items.Add(box);
 
         }
@@ -96,6 +98,12 @@ namespace Moorhuhn
                 timerTimeLeft.Stop();
                 start = false;
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Start setForm = new Start();
+            setForm.Show();
         }
     }
 }
