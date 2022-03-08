@@ -14,22 +14,22 @@ namespace Moorhuhn
     {
 
         // List<PictureBox> items = new List<PictureBox>();
-        PictureBox _boxEasy = null;
+        PictureBox _box = null;
         Random rnd = new Random();
         Boolean start = false;
         int counter = 0;
         int time = 10;
-
+        Start obj = new Start();
 
         public Form1()
         {
             InitializeComponent();
-            
-            _boxEasy = new PictureBox();
-            _boxEasy.Click += new EventHandler(PictureBoxClick);
-            Controls.Add(_boxEasy);
-            _boxEasy.Hide();
-            
+          
+            _box = new PictureBox();
+            _box.Click += new EventHandler(PictureBoxClick);
+            Controls.Add(_box);
+            _box.Hide();
+
             lblTimer.Text = "Timeleft: "+time+" seconds";
         }
 
@@ -44,16 +44,16 @@ namespace Moorhuhn
 
         private void MakePictureBox()
         {
-            if (_boxEasy == null)
-                _boxEasy = new PictureBox();
+            if (_box == null)
+                _box = new PictureBox();
 
-            _boxEasy.Width = 50;
-            _boxEasy.Height = 50;
-            _boxEasy.BackColor = Color.Red;
-            int x = rnd.Next(10, this.ClientSize.Width - _boxEasy.Width);
-            int y = rnd.Next(100, this.ClientSize.Height - _boxEasy.Height);
-            _boxEasy.Location = new Point(x, y);
-            _boxEasy.Show();
+            _box.Width = 50;
+            _box.Height = 50;
+            _box.BackColor = Color.Red;
+            int x = rnd.Next(10, this.ClientSize.Width - _box.Width);
+            int y = rnd.Next(100, this.ClientSize.Height - _box.Height);
+            _box.Location = new Point(x, y);
+            _box.Show();
             // items.Add(box);
 
         }
@@ -77,12 +77,37 @@ namespace Moorhuhn
 
         private void timerDelete_Tick(object sender, EventArgs e)
         {
-
-            int i = rnd.Next(0, 5);
-
-            if (start == true && i > 0 && i < 5)
+            if (obj.easy == true)
             {
-                MakePictureBox();
+                int i = rnd.Next(0, 10);
+
+                if (start == true && i > 0 && i < 10)
+                {
+                    MakePictureBox();
+
+                }
+
+            }
+            if (obj.medium == true)
+            {
+                int i = rnd.Next(0, 7);
+
+                if (start == true && i > 0 && i < 7)
+                {
+                    MakePictureBox();
+
+                }
+
+            }
+            if (obj.easy == true)
+            {
+                int i = rnd.Next(0, 5);
+
+                if (start == true && i > 0 && i < 5)
+                {
+                    MakePictureBox();
+
+                }
 
             }
 

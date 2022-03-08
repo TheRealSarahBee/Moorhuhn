@@ -13,7 +13,9 @@ namespace Moorhuhn
     public partial class Start : Form
     {
 
-        
+        public Boolean easy = false;
+        public Boolean medium = false;
+        public Boolean hard = false;
 
         public Start()
         {
@@ -22,8 +24,24 @@ namespace Moorhuhn
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if(rbEasy.Checked == true || rbMedium.Checked == true || rbHard.Checked == true)
+            if(rbEasy.Checked == true)
             {
+                easy = true;
+                Form1 setForm = new Form1();
+                setForm.Show();
+                this.Hide();
+
+            }
+            if(rbMedium.Checked == true)
+            {
+                medium = true;
+                Form1 setForm = new Form1();
+                setForm.Show();
+                this.Hide();
+            }
+            if(rbHard.Checked == true)
+            {
+                hard = true;
                 Form1 setForm = new Form1();
                 setForm.Show();
                 this.Hide();
