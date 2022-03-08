@@ -15,10 +15,11 @@ namespace Moorhuhn
 
         // List<PictureBox> items = new List<PictureBox>();
         PictureBox _box = null;
+        PictureBox _box2 = null;
         Random rnd = new Random();
         Boolean start = false;
         int counter = 0;
-        int time = 10;
+        int time = 20;
         Start obj = new Start();
 
         public Form1()
@@ -29,6 +30,13 @@ namespace Moorhuhn
             _box.Click += new EventHandler(PictureBoxClick);
             Controls.Add(_box);
             _box.Hide();
+
+            _box2 = new PictureBox();
+            _box2.Click += new EventHandler(PictureBoxClick);
+            Controls.Add(_box2);
+            _box2.Hide();
+
+
 
             lblTimer.Text = "Timeleft: "+time+" seconds";
         }
@@ -57,6 +65,21 @@ namespace Moorhuhn
             // items.Add(box);
 
         }
+        private void MakePictureBox2()
+        {
+            if (_box2 == null)
+                _box2 = new PictureBox();
+
+            _box2.Width = 50;
+            _box2.Height = 50;
+            _box2.BackColor = Color.Red;
+            int x = rnd.Next(10, this.ClientSize.Width - _box2.Width);
+            int y = rnd.Next(100, this.ClientSize.Height - _box2.Height);
+            _box2.Location = new Point(x, y);
+            _box2.Show();
+            // items.Add(box);
+
+        }
 
         private void PictureBoxClick(object sender, EventArgs e)
         {
@@ -64,53 +87,37 @@ namespace Moorhuhn
             if (sender is PictureBox && start == true)
             {
                 PictureBox box = (PictureBox)sender;
-                //items.Remove(box);
                 box.Hide();
-                // Controls.Remove(box);
                 counter++;
 
                 lblTreffer.Text = "Score: " + counter;
             }
-
         }
 
 
         private void timerDelete_Tick(object sender, EventArgs e)
         {
-            if (obj.easy == true)
+           
+           int i = rnd.Next(0, 10);
+
+            if (start == true && i > 0 && i < 10)
             {
+                MakePictureBox();
+            }
+
+        }
+        private void timerDelete2_Tick(object sender, EventArgs e)
+        {
                 int i = rnd.Next(0, 10);
 
                 if (start == true && i > 0 && i < 10)
                 {
-                    MakePictureBox();
+                    if (obj.medium == true || obj.hard == true)
+                    {
+                        MakePictureBox2();
+                    }
 
                 }
-
-            }
-            if (obj.medium == true)
-            {
-                int i = rnd.Next(0, 7);
-
-                if (start == true && i > 0 && i < 7)
-                {
-                    MakePictureBox();
-
-                }
-
-            }
-            if (obj.easy == true)
-            {
-                int i = rnd.Next(0, 5);
-
-                if (start == true && i > 0 && i < 5)
-                {
-                    MakePictureBox();
-
-                }
-
-            }
-
         }
 
         private void timerTimeLeft_Tick(object sender, EventArgs e)
@@ -130,5 +137,7 @@ namespace Moorhuhn
             Start setForm = new Start();
             setForm.Show();
         }
+
+        
     }
 }

@@ -27,6 +27,7 @@ namespace Moorhuhn
             if(rbEasy.Checked == true)
             {
                 easy = true;
+
                 Form1 setForm = new Form1();
                 setForm.Show();
                 this.Hide();
@@ -35,6 +36,7 @@ namespace Moorhuhn
             if(rbMedium.Checked == true)
             {
                 medium = true;
+
                 Form1 setForm = new Form1();
                 setForm.Show();
                 this.Hide();
@@ -42,6 +44,7 @@ namespace Moorhuhn
             if(rbHard.Checked == true)
             {
                 hard = true;
+
                 Form1 setForm = new Form1();
                 setForm.Show();
                 this.Hide();
