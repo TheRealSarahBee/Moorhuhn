@@ -36,6 +36,7 @@ namespace Moorhuhn
             this.lblTimer = new System.Windows.Forms.Label();
             this.timerTimeLeft = new System.Windows.Forms.Timer(this.components);
             this.timerDelete2 = new System.Windows.Forms.Timer(this.components);
+            this.timerDelete3 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnStart
@@ -81,8 +82,15 @@ namespace Moorhuhn
             // 
             // timerDelete2
             // 
+            this.timerDelete2.Enabled = true;
             this.timerDelete2.Interval = 2000;
             this.timerDelete2.Tick += new System.EventHandler(this.timerDelete2_Tick);
+            // 
+            // timerDelete3
+            // 
+            this.timerDelete3.Enabled = true;
+            this.timerDelete3.Interval = 500;
+            this.timerDelete3.Tick += new System.EventHandler(this.timerDelete3_Tick);
             // 
             // Form1
             // 
@@ -112,6 +120,7 @@ namespace Moorhuhn
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Timer timerTimeLeft;
         private System.Windows.Forms.Timer timerDelete2;
+        private System.Windows.Forms.Timer timerDelete3;
     }
 }
 

@@ -13,38 +13,36 @@ namespace Moorhuhn
     public partial class Start : Form
     {
 
-        public Boolean easy = false;
-        public Boolean medium = false;
-        public Boolean hard = false;
+        public static int level;
+
 
         public Start()
         {
             InitializeComponent();
+            
+
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             if(rbEasy.Checked == true)
             {
-                easy = true;
-
+                level += 1;
                 Form1 setForm = new Form1();
                 setForm.Show();
                 this.Hide();
-
             }
             if(rbMedium.Checked == true)
             {
-                medium = true;
-
+                level += 2;
                 Form1 setForm = new Form1();
                 setForm.Show();
                 this.Hide();
+
             }
             if(rbHard.Checked == true)
             {
-                hard = true;
-
+                level += 3;
                 Form1 setForm = new Form1();
                 setForm.Show();
                 this.Hide();
@@ -67,5 +65,6 @@ namespace Moorhuhn
 
 
         }
+
     }
 }
