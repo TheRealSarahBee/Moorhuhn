@@ -19,9 +19,9 @@ namespace Moorhuhn
         PictureBox _box3 = null;
         Random rnd = new Random();
         Boolean start = false;
-        int counter = 0;
+        public static int counter = 0;
         int time = 20;
-        int totalcount = 0;
+        public static int totalcount = 0;
         
         
         public Form1()
@@ -180,7 +180,20 @@ namespace Moorhuhn
                 if(dialog == DialogResult.OK)
                 {
                     this.Close();
+                    DialogResult dialog2 = MessageBox.Show("Get in Highscore-Ranking?","Highscore",MessageBoxButtons.YesNo);
+                    if(dialog2 == DialogResult.Yes)
+                    {
+                        Highscore setForm = new Highscore();
+                        setForm.Show();
+                    }
+                    else
+                    {
+                        Close();
+                        counter = 0;
+                        totalcount = 0;
+                    }
                 }
+                
                 
             }
         }
